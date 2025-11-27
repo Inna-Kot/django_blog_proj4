@@ -125,6 +125,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import os
 from pathlib import Path
+import dj_database_url
+
+if os.path.isfile('env.py'):
+    import env
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
