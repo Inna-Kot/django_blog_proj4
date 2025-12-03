@@ -22,3 +22,9 @@ urlpatterns = [
     path('', my_blog, name='home'),  # домашня сторінка на корені
     path('admin/', admin.site.urls),  # адмінка
 ]
+
+from blog.views import create_superuser
+
+urlpatterns += [
+    path('create-superuser/', create_superuser),
+]
