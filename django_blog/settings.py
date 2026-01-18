@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vi!tv!agdfv1e8irb$8c-4$3&h2c^o$%jblp%hsh-o-ljm+)d8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-proj4.onrender.com']
 
@@ -145,3 +145,5 @@ CSRF_TRUSTED_ORIGINS = [
     "https://django-blog-proj4.onrender.com"
 ]
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
