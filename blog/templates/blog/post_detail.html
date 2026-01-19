@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+<article>
+  <h1>{{ post.title }}</h1>
+  <p>By {{ post.author.username }} | {{ post.created_on|date:"F d, Y" }}</p>
+
+  <div>{{ post.content|linebreaks }}</div>
+</article>
+
+<hr />
+
+<a href="{% url 'home' %}">← Back to all posts</a>
+{% endblock content %}
