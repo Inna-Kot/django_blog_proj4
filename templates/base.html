@@ -1,0 +1,29 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Django Blog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="navbar-brand" href="{% url 'home' %}">My Django Blog</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <p class="m-0 text-center text-white">
+            {% block copyright %}
+                Made by Code Instituters
+            {% endblock copyright %}
+        </p>
+    </footer>
+</body>
+</html>
