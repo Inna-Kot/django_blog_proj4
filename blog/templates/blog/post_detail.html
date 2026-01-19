@@ -1,12 +1,42 @@
-{% extends "base.html" %} {% block content %}
-<article>
-  <h1>{{ post.title }}</h1>
-  <p>By {{ post.author.username }} | {{ post.created_on|date:"F d, Y" }}</p>
+{% extends "base.html" %}
 
-  <div>{{ post.content|linebreaks }}</div>
+{% block content %}
+<article>
+    <h1>{{ post.title }}</h1>
+    <p>By {{ post.author.username }} | {{ post.created_on|date:"F d, Y" }}</p>
+
+    <div>{{ post.content|linebreaks }}</div>
 </article>
 
-<hr />
+<hr>
+
+<h2>Comments</h2>
+
+{% if comments %}
+    <ul>
+    {% for comment in comments %}
+        <li>
+            <strong>{{ comment.comment_author.username }}</strong> said:<br>
+            {{ comment.body|linebreaks }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments yet. Be the first!</p>
+{% endif %}
+
+<hr>
+
+{% if user.is_authenticated %}
+<h2>Add a comment</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% else %}
+<p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
+{% endif %}
 
 <a href="{% url 'home' %}">← Back to all posts</a>
 {% endblock content %}
