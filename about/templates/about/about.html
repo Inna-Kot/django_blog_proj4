@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h1>{{ about.title }}</h1>
+    <p>Last updated: {{ about.updated_on|date:"F d, Y" }}</p>
+    <div>{{ about.content|linebreaks }}</div>
+</article>
+{% endblock content %}
