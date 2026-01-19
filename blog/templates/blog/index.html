@@ -7,7 +7,10 @@
 <ul>
   {% for post in object_list %}
     <li>
-      <strong>{{ post.title }}</strong> by {{ post.author.username }} <br />
+      <strong>
+        <a href="{% url 'post_detail' post.slug %}">
+        {{ post.title }}
+      </a></strong> by {{ post.author.username }} <br />
       {{ post.excerpt|default:post.content|truncatechars:100 }}
     </li>
   {% empty %}
