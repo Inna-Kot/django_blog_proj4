@@ -1,0 +1,41 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Getting Back to Active Life After Injury",
+      "slug": "getting-back-to-active-life-after-injury",
+      "author": 1,
+      "content": "Rehabilitation after injuries is a comprehensive process that includes physical exercises, proper nutrition, and psychological support. It's important to gradually restore mobility under the guidance of a specialist.",
+      "excerpt": "Rehabilitation after injuries is a process to restore physical and mental well-being.",
+      "status": 1,
+      "created_on": "2026-01-18T09:00:00Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Supporting Someone During Recovery",
+      "slug": "supporting-someone-during-recovery",
+      "author": 1,
+      "content": "Psychological support is crucial. Listening, celebrating small successes, and helping with daily tasks all contribute to faster recovery.",
+      "excerpt": "Psychological support helps people recover faster after injuries or surgeries.",
+      "status": 1,
+      "created_on": "2026-01-18T09:30:00Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Physiotherapy: Exercises for Post-Surgery Recovery",
+      "slug": "physiotherapy-exercises-for-post-surgery-recovery",
+      "author": 1,
+      "content": "Regular physical exercises under a specialist's supervision help restore muscle strength and joint mobility after surgery. Start with light exercises and gradually increase the intensity.",
+      "excerpt": "Physiotherapy helps regain strength and mobility after surgeries.",
+      "status": 1,
+      "created_on": "2026-01-18T10:00:00Z"
+    }
+  }
+]
