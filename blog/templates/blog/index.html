@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to My Django Blog</h1>
+
+<h2>Published Posts:</h2>
+<ul>
+    {% for post in object_list %}
+        <li>
+            <strong>{{ post.title }}</strong> by {{ post.author.username }} <br>
+            {{ post.excerpt|default:post.content|truncatechars:100 }}
+        </li>
+    {% empty %}
+        <li>No posts published yet.</li>
+    {% endfor %}
+</ul>
+
+{% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock content %}
