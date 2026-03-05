@@ -1,4 +1,4 @@
-asgiref==3.10.0
+﻿asgiref==3.10.0
 certifi==2026.1.4
 cffi==2.0.0
 charset-normalizer==3.4.4
@@ -11,6 +11,7 @@ gunicorn==20.1.0
 idna==3.11
 oauthlib==3.3.1
 psycopg==3.2.0
+psycopg2-binary==2.9.11
 pycparser==2.23
 PyJWT==2.10.1
 python-dotenv==1.0.1
