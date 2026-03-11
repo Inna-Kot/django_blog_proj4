@@ -145,6 +145,10 @@ DATABASES = {
 
 
 STATIC_URL = '/static/'
+# This tells Django where to look for static files in your project
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
