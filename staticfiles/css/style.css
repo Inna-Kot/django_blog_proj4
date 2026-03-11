@@ -1,0 +1,80 @@
+/* General Layout Styles */
+body {
+    background-color: #fdfaf5; /* Warm cream background */
+    color: #4a4a4a; /* Soft dark grey text for readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center; /* Center-align all text by default */
+}
+
+.container {
+    max-width: 800px; /* Constrain content width for better UX */
+    margin: 0 auto;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #5d4037 !important; /* Deep chocolate brown */
+    justify-content: center;
+}
+
+.navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.nav-link, .navbar-brand {
+    color: #f3e5f5 !important;
+}
+
+/* Post List Styling */
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+li {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Soft shadow for a cozy look */
+    padding: 40px !important; /* Spacious padding for post cards */
+    margin-bottom: 40px !important;
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-5px); /* Subtle lift effect on hover */
+}
+
+/* Typography and Buttons */
+.post-text {
+    max-width: 600px; /* Limit text width for easier reading */
+    margin: 20px auto;
+    line-height: 1.8; /* Increased line spacing */
+    text-align: center;
+}
+
+.btn-signup {
+    background-color: #d4a373; /* Warm gold/tan color */
+    color: white !important;
+    border-radius: 25px;
+    padding: 10px 25px;
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-signup:hover {
+    background-color: #bc8a5f;
+}
+
+/* Footer Section */
+footer {
+    background-color: #f1ebe4;
+    padding: 30px 0;
+    margin-top: 60px;
+    font-style: italic;
+    color: #6d4c41;
+}
