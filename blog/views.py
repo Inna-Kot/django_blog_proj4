@@ -12,7 +12,7 @@ def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
 
-    comments = post.comments.filter(active=True)
+    comments = post.comments.filter(approved=True)
     new_comment = None
 
     if request.method == 'POST':
@@ -20,7 +20,7 @@ def post_detail(request, slug):
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
-            new_comment.comment_author = request.user
+            new_comment.author = request.user
             new_comment.save()
     else:
         comment_form = CommentForm()
