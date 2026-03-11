@@ -1,42 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article>
-    <h1>{{ post.title }}</h1>
-    <p>By {{ post.author.username }} | {{ post.created_on|date:"F d, Y" }}</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <article class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title">{{ post.title }}</h1>
+                    <p class="text-muted">By {{ post.author.username }} | {{ post.created_on|date:"F d, Y" }}</p>
+                    <hr>
+                    <div class="card-text text-start">
+                        {{ post.content|safe }}
+                    </div>
+                </div>
+            </article>
 
-    <div>{{ post.content|linebreaks }}</div>
-</article>
+            <section class="card mb-4 shadow-sm">
+                <div class="card-body text-start">
+                    <h3>Comments</h3>
+                    {% if comments %}
+                        <ul class="list-unstyled">
+                        {% for comment in comments %}
+                            <li class="border-bottom pb-3 mb-3">
+                                <strong>{{ comment.comment_author.username }}</strong> 
+                                <span class="text-muted small">said:</span><br>
+                                <div class="mt-2">{{ comment.body|linebreaks }}</div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted italic">No comments yet. Be the first to light a candle of conversation!</p>
+                    {% endif %}
+                </div>
+            </section>
 
-<hr>
+            <section class="card mb-4 shadow-sm">
+                <div class="card-body text-start">
+                    {% if user.is_authenticated %}
+                        <h3>Add a comment</h3>
+                        <form method="post" style="margin-top: 1.3em;">
+                            {% csrf_token %}
+                            {{ comment_form.as_p }}
+                            <button type="submit" class="btn btn-signup">Submit Comment</button>
+                        </form>
+                    {% else %}
+                        <p class="alert alert-warning">
+                            <a href="{% url 'account_login' %}">Log in</a> to add a comment.
+                        </p>
+                    {% endif %}
+                </div>
+            </section>
 
-<h2>Comments</h2>
-
-{% if comments %}
-    <ul>
-    {% for comment in comments %}
-        <li>
-            <strong>{{ comment.comment_author.username }}</strong> said:<br>
-            {{ comment.body|linebreaks }}
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No comments yet. Be the first!</p>
-{% endif %}
-
-<hr>
-
-{% if user.is_authenticated %}
-<h2>Add a comment</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <button type="submit">Submit</button>
-</form>
-{% else %}
-<p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
-{% endif %}
-
-<a href="{% url 'home' %}">← Back to all posts</a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary mb-5">← Back to all posts</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

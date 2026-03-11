@@ -1,53 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Welcome to My Django Blog</h1>
+<div class="container">
+    <h1>Welcome to My Candle Blog</h1>
+    <h2>Latest Stories:</h2>
 
-<h2>Published Posts:</h2>
-<ul>
-  {% for post in object_list %}
-    <li>
-      <strong>
-        <a href="{% url 'post_detail' post.slug %}">
-        {{ post.title }}
-      </a></strong> by {{ post.author.username }} <br />
-      {{ post.excerpt|default:post.content|truncatechars:100 }}
-    </li>
-  {% empty %}
-    <li>No posts published yet.</li>
-  {% endfor %}
-</ul>
+    <ul>
+        {% for post in object_list %}
+        <li>
+            <strong>
+                <a href="{% url 'post_detail' post.slug %}" style="font-size: 1.5rem;">
+                    {{ post.title }}
+                </a>
+            </strong>
 
-{% if is_paginated %}
-<nav aria-label="Page navigation">
-  <ul class="pagination">
-    {# Кнопка Previous #}
-    {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      </li>
-    {% else %}
-      <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            <p style="color: #888; font-size: 0.9rem;">
+                by {{ post.author.username }} | {{ post.created_on|date:"M d, Y" }}
+            </p>
+            
+            <div class="post-text">
+                {{ post.content|striptags|linebreaks | safe }}
+            </div>
+
+            <a href="{% url 'post_detail' post.slug %}" class="btn-signup" style="text-decoration: none; font-size: 0.8rem;">
+                Read Full Story
+            </a>
+        </li>
+        {% empty %}
+        <li>No posts published yet.</li>
+        {% endfor %}
+    </ul>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {# button Previous #}
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+
+            {# button Numbers #}
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {# button Next #}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    </nav>
     {% endif %}
-
-    {# Номери сторінок #}
-    {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
-      {% else %}
-        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
-      {% endif %}
-    {% endfor %}
-
-    {# Кнопка Next #}
-    {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-      </li>
-    {% else %}
-      <li class="page-item disabled"><span class="page-link">Next</span></li>
-    {% endif %}
-  </ul>
-</nav>
-{% endif %}
+</div>
 {% endblock content %}
