@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <article>
     <h1>{{ about.title }}</h1>
     <p>Last updated: {{ about.updated_on|date:"F d, Y" }}</p>
-    <div>{{ about.content|linebreaks }}</div>
+    
+    <img src="{% static 'images/nobody.jpg' %}" alt="About me image">
+    
+    <div>{{ about.content|safe }}</div>
 </article>
 {% endblock content %}
