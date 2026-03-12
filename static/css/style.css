@@ -1,7 +1,7 @@
 /* General Layout Styles */
 body {
-    background-color: #f5c577; /* Warm cream background */
-    color: #d1cccc; /* Soft dark grey text for readability */
+    background-color: #f6ede0; /* Warm cream background */
+    color: #fcfbfb; /* Soft dark grey text for readability */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center; /* Center-align all text by default */
 }
