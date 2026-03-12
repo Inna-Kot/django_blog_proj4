@@ -1,7 +1,7 @@
 /* General Layout Styles */
 body {
-    background-color: #fdfaf5; /* Warm cream background */
-    color: #4a4a4a; /* Soft dark grey text for readability */
+    background-color: #f5c577; /* Warm cream background */
+    color: #d1cccc; /* Soft dark grey text for readability */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center; /* Center-align all text by default */
 }
@@ -11,19 +11,19 @@ body {
     margin: 0 auto;
 }
 
-/* Navigation Bar */
+/* Navigation Bar  */
 .navbar {
-    background-color: #5d4037 !important; /* Deep chocolate brown */
+    background-color: #5d4037 !important; 
     justify-content: center;
-}
+} 
 
 .navbar-nav {
     width: 100%;
     justify-content: center;
 }
 
-.nav-link, .navbar-brand {
-    color: #f3e5f5 !important;
+ .nav-link, .navbar-brand {
+    color: #351e89 !important;
 }
 
 /* Post List Styling */
