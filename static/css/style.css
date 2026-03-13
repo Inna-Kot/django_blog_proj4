@@ -92,3 +92,27 @@ footer {
     resize: none;
     min-height: 120px; /* Sets a comfortable initial height */
 }
+
+/* Styling for pop-up Toasts */
+.toast-container {
+    margin-top: 80px; 
+    margin-right: 20px;
+}
+
+.toast {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.toast-header {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: #351e89; 
+    color: white;
+}
+
+.toast-body {
+    padding: 15px;
+    font-size: 1rem;
+}
