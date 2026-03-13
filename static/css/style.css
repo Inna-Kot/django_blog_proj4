@@ -87,3 +87,8 @@ footer {
 .italic {
     font-style: italic;
 }
+/* Disable manual resizing of the comment box */
+#id_body {
+    resize: none;
+    min-height: 120px; /* Sets a comfortable initial height */
+}

@@ -20,8 +20,9 @@
                     {% if comments %}
 <ul class="list-unstyled">
     {% for comment in comments %}
-    <li class="border-bottom pb-3 mb-3 
-        {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
+    {# Only show approved comments OR if the current user is the author #}
+    {% if comment.approved or comment.author == user %}
+    <li class="border-bottom pb-3 mb-3 {% if not comment.approved %}faded{% endif %}">
         
         <strong>{{ comment.author.username }}</strong> 
         <span class="text-muted small">on {{ comment.created_on|date:"M d, Y" }} said:</span><br>
@@ -36,6 +37,7 @@
         </p>
         {% endif %}
     </li>
+    {% endif %}
     {% endfor %}
 </ul>
                     {% else %}
