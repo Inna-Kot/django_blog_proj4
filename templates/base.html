@@ -40,7 +40,7 @@
        <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1100;">
     <div class="toast-container">
         {% for message in messages %}
-        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
             <div class="toast-header">
                 <strong class="me-auto text-primary">Notification</strong>
                 <small class="text-muted">Just now</small>
@@ -70,7 +70,6 @@
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
 </script>
 
-{% block extras %}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
@@ -80,6 +79,7 @@
         toastList.forEach(toast => toast.show());
     });
 </script>
+{% block extras %}
 {% endblock %}
 </body>
 </html>
