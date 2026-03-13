@@ -41,11 +41,6 @@ li {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for a cozy look */
   padding: 40px !important; /* Spacious padding for post cards */
   margin-bottom: 40px !important;
-  transition: transform 0.3s ease;
-}
-
-li:hover {
-  transform: translateY(-5px); /* Subtle lift effect on hover */
 }
 
 /* Typography and Buttons */
@@ -116,4 +111,14 @@ footer {
 .toast-body {
     padding: 15px;
     font-size: 1rem;
+}
+/* Add subtle lift effect to interactive buttons */
+.btn-edit, 
+.btn-delete {
+    transition: transform 0.3s ease;
+}
+
+.btn-edit:hover, 
+.btn-delete:hover {
+    transform: translateY(-3px); 
 }
