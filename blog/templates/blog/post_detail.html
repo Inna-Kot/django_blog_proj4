@@ -1,8 +1,11 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %} {% block content %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            
             <article class="card mb-4 shadow-sm">
                 <div class="card-body">
                     <h1 class="card-title">{{ post.title }}</h1>
@@ -18,28 +21,32 @@
                 <div class="card-body text-start">
                     <h3><i class="far fa-comments"></i> {{ comment_count }} Comments</h3>
                     {% if comments %}
-<ul class="list-unstyled">
-    {% for comment in comments %}
-    {# Only show approved comments OR if the current user is the author #}
-    {% if comment.approved or comment.author == user %}
-    <li class="border-bottom pb-3 mb-3 {% if not comment.approved %}faded{% endif %}">
-        
-        <strong>{{ comment.author.username }}</strong> 
-        <span class="text-muted small">on {{ comment.created_on|date:"M d, Y" }} said:</span><br>
-        
-        <div class="mt-2">
-            {{ comment.body|linebreaks }}
-        </div>
+                    <ul class="list-unstyled">
+                        {% for comment in comments %}
+                        {% if comment.approved or comment.author == user %}
+                        <li class="border-bottom pb-3 mb-3 {% if not comment.approved %}faded{% endif %}">
+                            
+                            <strong>{{ comment.author.username }}</strong> 
+                            <span class="text-muted small">on {{ comment.created_on|date:"M d, Y" }} said:</span><br>
+                            
+                            <div id="comment{{ comment.id }}" class="mt-2">
+                                {{ comment.body|linebreaks }}
+                            </div>
 
-        {% if not comment.approved and comment.author == user %}
-        <p class="text-warning small italic">
-            <i class="fas fa-clock"></i> This comment is awaiting approval
-        </p>
-        {% endif %}
-    </li>
-    {% endif %}
-    {% endfor %}
-</ul>
+                            {% if not comment.approved and comment.author == user %}
+                            <p class="text-warning small italic">
+                                <i class="fas fa-clock"></i> This comment is awaiting approval
+                            </p>
+                            {% endif %}
+                            
+                            {% if user.is_authenticated and comment.author == user %}
+                                <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                                <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
                     {% else %}
                         <p class="text-muted italic">No comments yet. Be the first to light a candle of conversation!</p>
                     {% endif %}
@@ -50,10 +57,10 @@
                 <div class="card-body text-start">
                     {% if user.is_authenticated %}
                         <h3>Add a comment</h3>
-                        <form method="post" style="margin-top: 1.3em;">
+                        <form id="commentForm" method="post" style="margin-top: 1.3em;">
                             {% csrf_token %}
                             {{ comment_form | crispy }}
-                            <button type="submit" class="btn btn-signup">Submit Comment</button>
+                            <button id="submitButton" type="submit" class="btn btn-signup">Submit Comment</button>
                         </form>
                     {% else %}
                         <p class="alert alert-warning">
@@ -66,5 +73,23 @@
             <a href="{% url 'home' %}" class="btn btn-outline-secondary mb-5">← Back to all posts</a>
         </div>
     </div>
+</div> 
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your comment? This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock content %}
