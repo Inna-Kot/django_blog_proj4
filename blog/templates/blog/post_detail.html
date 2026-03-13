@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags static %}
 
 {% block content %}
 <div class="container mt-5">
@@ -93,3 +93,7 @@
   </div>
 </div>
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
