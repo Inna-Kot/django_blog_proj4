@@ -79,3 +79,11 @@ footer {
   font-style: italic;
   color: #6d4c41;
 }
+/* Styling for comments awaiting approval */
+.faded {
+    opacity: 0.5;
+}
+
+.italic {
+    font-style: italic;
+}

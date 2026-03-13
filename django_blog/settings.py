@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     'django_summernote',
     'about',
     'django.contrib.sites',
-'allauth',
-'allauth.account',
-'allauth.socialaccount',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -165,3 +167,5 @@ CSRF_TRUSTED_ORIGINS = [
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
