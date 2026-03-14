@@ -4,9 +4,7 @@ from .models import About
 from .forms import NewsletterForm
 
 def about_me(request):
-    """
-    Renders the About page and handles newsletter subscriptions.
-    """
+    """Renders the About page and handles newsletter subscriptions."""
     if request.method == "POST":
         newsletter_form = NewsletterForm(data=request.POST)
         if newsletter_form.is_valid():
@@ -15,6 +13,9 @@ def about_me(request):
                 request, messages.SUCCESS,
                 "Success! You are now subscribed to our cozy newsletter."
             )
+            newsletter_form = NewsletterForm() 
+    else:
+        newsletter_form = NewsletterForm()
 
     about = About.objects.all().order_by('-updated_on').first()
     newsletter_form = NewsletterForm()
