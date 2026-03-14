@@ -122,3 +122,26 @@ footer {
 .btn-delete:hover {
     transform: translateY(-3px); 
 }
+/* Compact styling for password help text in forms */
+.helptext, .form-text {
+    font-size: 0.8rem; /* Smaller font siz e */
+    color: #6c757d;    /* Muted gray color */
+    line-height: 1.2;  /* Tighter line spacing */
+    display: block;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+/* Specifically target the list of requirements if it's a <ul> */
+.helptext ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0;
+}
+
+.helptext li {
+    margin-bottom: 2px;
+}
+#signup_form ul li {
+    padding: 5px !important;
+    margin-bottom: 5px !important;
+    font-size: 0.85rem;   
+}
