@@ -14,6 +14,7 @@ GOAL_CHOICES = (
     ('cozy', 'Cozy Vibe'),
 )
 
+
 class About(models.Model):
     """ Stores a single about me text. """
     title = models.CharField(max_length=200)
@@ -22,6 +23,7 @@ class About(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class NewsletterSubscription(models.Model):
     """ Model for storing unique newsletter subscriptions."""
@@ -38,3 +40,4 @@ class NewsletterSubscription(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.email}"
+    
