@@ -18,7 +18,6 @@ def about_me(request):
         newsletter_form = NewsletterForm()
 
     about = About.objects.all().order_by('-updated_on').first()
-    newsletter_form = NewsletterForm()
 
     return render(
         request,
